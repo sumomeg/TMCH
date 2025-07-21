@@ -1,3 +1,5 @@
+"use client"
+
 import Head from 'next/head';
 import { NextPage } from 'next';
 import { Header } from '../components/Header';
