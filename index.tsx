@@ -1,67 +1,34 @@
-// pages/index.tsx
-import React from 'react';
+import Head from 'next/head';
+import { NextPage } from 'next';
+import { Header } from '../components/Header';
+import { HeroSection } from '../components/HeroSection';
+import { AboutSection } from '../components/AboutSection';
+import { ServicesSection } from '../components/ServicesSection';
+import { Footer } from '../components/Footer';
+import { siteConfig } from '../config';
 
-const HomePage: React.FC = () => {
+const Home: NextPage = () => {
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1>Welcome to TMCH</h1>
-        <p>Your trusted partner in [industry/field]</p>
-      </header>
+    <>
+      <Head>
+        <title>{siteConfig.title}</title>
+        <meta name="description" content={siteConfig.description} />
+        <meta property="og:title" content={siteConfig.title} />
+        <meta property="og:description" content={siteConfig.description} />
+        <meta property="og:url" content={siteConfig.url} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={siteConfig.url} />
+      </Head>
 
-      <section style={styles.aboutSection}>
-        <h2>About Us</h2>
-        <p>
-          TMCH is dedicated to providing exceptional services and solutions to meet your needs. We pride ourselves on our expertise and commitment.
-        </p>
-      </section>
-
-      <section style={styles.servicesSection}>
-        <h2>Our Services</h2>
-        <ul>
-          <li>Service One</li>
-          <li>Service Two</li>
-          <li>Service Three</li>
-        </ul>
-      </section>
-
-      <footer style={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} TMCH. All rights reserved.</p>
-      </footer>
-    </div>
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+      </main>
+      <Footer />
+    </>
   );
 };
 
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    fontFamily: 'Arial, sans-serif',
-    lineHeight: 1.6,
-    margin: 0,
-    padding: 0,
-    color: '#333',
-  },
-  header: {
-    backgroundColor: '#005A9C',
-    color: '#fff',
-    padding: '40px 20px',
-    textAlign: 'center',
-  },
-  aboutSection: {
-    padding: '20px',
-    maxWidth: '1000px',
-    margin: '0 auto',
-  },
-  servicesSection: {
-    padding: '20px',
-    maxWidth: '1000px',
-    margin: '0 auto',
-  },
-  footer: {
-    backgroundColor: '#f4f4f4',
-    textAlign: 'center',
-    padding: '10px 20px',
-    marginTop: '40px',
-  },
-};
-
-export default HomePage;
+export default Home;
